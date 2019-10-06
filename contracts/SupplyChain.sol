@@ -118,7 +118,7 @@ modifier isOwner() {
   function buyItem(uint sku) forSale(sku)
     public payable
   {
-    require(msg.value > items[sku].price, "The amout sent to purchase is below the item price");
+    require(msg.value >= items[sku].price, "The amout sent to purchase is below the item price");
     emit LogSold(sku);
     items[sku].buyer = msg.sender;
     items[sku].state = State.Sold;
